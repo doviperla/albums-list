@@ -19,18 +19,7 @@
   <div class="list pull-left">
     <ul>
       <ng-container *ngIf="movies && movies.length > 0 ; else noResult">
-        <li class="" *ngFor="let movie of movies" [ngClass]="{selected:selectedMovie?.id === movie.id}"
-          (click)="onMovieSelected(movie)">
-          <div>
-            <div class="">
-              <img [src]="movie.poster" />
-            </div>
-            <div class="">
-              <b>{{movie.title}}</b><br />
-              <span>Released {{movie.year}}</span>
-            </div>
-          </div>
-        </li>
+       <app-movies-list [innerMovies]="movies"></app-movies-list>
       </ng-container>
       <ng-template #noResult>
         <li>

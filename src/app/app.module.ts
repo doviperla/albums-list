@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MoviesContainerComponent } from './movies/movies-container/movies-container.component';
 import { FormsModule } from '@angular/forms';
+import { MoviesListComponent } from './movies/movies-list/movies-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesContainerComponent
+    MoviesContainerComponent,
+    MoviesListComponent
   ],
   imports: [
     BrowserModule,

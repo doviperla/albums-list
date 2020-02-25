@@ -1,0 +1,11 @@
+<li class="" *ngFor="let movie of innerMovies">
+  <div>
+    <div class="">
+      <img [src]="movie.poster" />
+    </div>
+    <div class="">
+      <b>{{movie.title}}</b><br />
+      <span>Released {{movie.year}}</span>
+    </div>
+  </div>
+</li>
