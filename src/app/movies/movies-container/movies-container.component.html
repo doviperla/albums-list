@@ -1,23 +1,42 @@
-<h1>Movie Catalog</h1>
-<section>
-  <div class='details'>
-    <h3>{{movie?.title}} Details</h3>
+<section class="group">
+  <h1>Movie Catalog</h1>
+  <div class="details pull-left" *ngIf="selectedMovie">
+    <h3>{{selectedMovie?.title}} Details</h3>
     <div>
-      Id: {{movie?.id}}<br />
-      Year: {{movie?.year}}<br />
+      Id: {{selectedMovie?.id}}
     </div>
     <div>
-      <label >
-        Title: <input type='text' [value]="movie?.title"
-                      (keyup.enter)="movie.title = titleInput.value" #titleInput />
+      <label>
+        Title: <input type='text' [(ngModel)]="selectedMovie.title" />
       </label>
     </div>
     <div>
-      <label >
-        Year: <input type='text' [(ngModel)]="movie.year" />
+      <label>
+        Year: <input type='text' [(ngModel)]="selectedMovie.year" />
       </label>
     </div>
-    <button (click)="onSaveMovie(titleInput.value)" >Save</button>
-    <button (click)="createNew()">Create New</button>
+  </div>
+  <div class="list pull-left">
+    <ul>
+      <ng-container *ngIf="movies && movies.length > 0 ; else noResult">
+        <li class="" *ngFor="let movie of movies" [ngClass]="{selected:selectedMovie?.id === movie.id}"
+          (click)="onMovieSelected(movie)">
+          <div>
+            <div class="">
+              <img [src]="movie.poster" />
+            </div>
+            <div class="">
+              <b>{{movie.title}}</b><br />
+              <span>Released {{movie.year}}</span>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+      <ng-template #noResult>
+        <li>
+          <h3>No Result for movies!</h3>
+        </li>
+      </ng-template>
+    </ul>
   </div>
 </section>

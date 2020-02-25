@@ -1,3 +1,4 @@
+import { MOVIES } from './../../mocks/movies.mock';
 import { Movie } from './../../models/movie.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,28 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesContainerComponent implements OnInit {
 
-  movie:Movie;
+  movies: Movie[];
+  selectedMovie: Movie;
 
-  constructor() { 
-    this.movie = new Movie(3,'Toy Story', 1995);
+  constructor() {
+
   }
 
   ngOnInit() {
+    window.setTimeout(() => {
+      this.movies = MOVIES;
+    }, 2000);
   }
 
-  titleChanged(event)
-  {
-    console.log(event);
+  onMovieSelected(movie: Movie) {
+    this.selectedMovie = movie;
   }
 
-  onSaveMovie(value:string)
-  {
-    this.movie.title = value;
-  }
 
-  createNew()
-  {
-    
-  }
 
 }
