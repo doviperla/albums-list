@@ -1,25 +1,16 @@
 <section class="group">
   <h1>Movie Catalog</h1>
   <div class="details pull-left" *ngIf="selectedMovie">
-    <h3>{{selectedMovie?.title}} Details</h3>
-    <div>
-      Id: {{selectedMovie?.id}}
-    </div>
-    <div>
-      <label>
-        Title: <input type='text' [(ngModel)]="selectedMovie.title" />
-      </label>
-    </div>
-    <div>
-      <label>
-        Year: <input type='text' [(ngModel)]="selectedMovie.year" />
-      </label>
-    </div>
+   <app-movie-details
+   (changeYear)="onChangeYear($event)"
+   [selectedMovie]="selectedMovie"></app-movie-details>
   </div>
   <div class="list pull-left">
     <ul>
       <ng-container *ngIf="movies && movies.length > 0 ; else noResult">
-       <app-movies-list [innerMovies]="movies"></app-movies-list>
+        <app-movies-list
+        (movieSelected)="onMovieSelected($event)"
+        [innerMovies]="movies"></app-movies-list>
       </ng-container>
       <ng-template #noResult>
         <li>

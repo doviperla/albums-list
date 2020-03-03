@@ -1,4 +1,4 @@
-<li class="" *ngFor="let movie of innerMovies">
+<li class="" *ngFor="let movie of innerMovies" (click)="onSelectedMovie(movie)">
   <div>
     <div class="">
       <img [src]="movie.poster" />

@@ -26,6 +26,8 @@ export class MoviesContainerComponent implements OnInit {
     this.selectedMovie = movie;
   }
 
-
+  onChangeYear(year: number) {
+    this.selectedMovie.year = year;
+  }
 
 }

@@ -1,0 +1,17 @@
+<h3>{{selectedMovie?.title}} Details</h3>
+<div>
+  Id: {{selectedMovie?.id}}
+</div>
+<div>
+  <label>
+    Title: <input type='text' [(ngModel)]="selectedMovie.title" />
+  </label>
+</div>
+<div>
+  <label>
+    Year: <input type='text' [value]="selectedMovie.year" #txtYear />
+  </label>
+</div>
+<div>
+  <button (click)="onChangeYear(txtYear.value)">Save</button>
+</div>
